@@ -1,0 +1,41 @@
+CREATE TABLE Student(
+Reg_No Int PRIMARY KEY,
+S_Name VARCHAR(30),
+Dept VARCHAR(3), 
+CGPA DECIMAL (3,2)
+);
+
+INSERT INTO Student VALUES(101,"A","CSE",3.25);
+INSERT INTO Student VALUES(105,"B","EEE",3.8);
+INSERT INTO Student VALUES(110,"A","SWE",3.7);
+INSERT INTO Student VALUES(115,"C","CSE",3.5);
+INSERT INTO Student VALUES(123,"D","EEE",3.7);
+INSERT INTO Student VALUES(127,"B","CSE",3.6);
+INSERT INTO Student VALUES(128,"B","ENG",3.9);
+
+CREATE TABLE Stu_Org(
+Reg_No Int,
+Org VARCHAR(30)
+);
+INSERT INTO Stu_Org VALUES(105,"KIN");
+INSERT INTO Stu_Org VALUES(101,"RIM");
+INSERT INTO Stu_Org VALUES(105,"RIM");
+INSERT INTO Stu_Org VALUES(127,"KIN");
+INSERT INTO Stu_Org VALUES(127,"SSA");
+INSERT INTO Stu_Org VALUES(130,"SPS");
+
+SELECT *FROM Student;SELECT *FROM Stu_Org;
+-- Natural Join=Inner Join
+SELECT Student.Reg_No,Stu_Org.Org,Dept
+FROM Student INNER JOIN Stu_Org
+ON Student.Reg_No=Stu_Org.Reg_No ORDER BY Reg_No;
+
+-- LEFT JOIN
+SELECT Student.Reg_No,Stu_Org.Org,Dept
+FROM Student LEFT JOIN Stu_Org
+ON Student.Reg_No=Stu_Org.Reg_No ORDER BY Reg_No;
+
+-- RIGHT JOIN
+SELECT Student.Reg_No,Stu_Org.Org,Dept
+FROM Student RIGHT JOIN Stu_Org
+ON Student.Reg_No=Stu_Org.Reg_No ORDER BY Reg_No;
